@@ -32,4 +32,23 @@ define Package/luci-app-eqos/install
 	po2lmo ./po/zh-cn/eqos.po $(1)/usr/lib/lua/luci/i18n/eqos.zh-cn.lmo
 endef
 
+define Package/luci-app-eqos/postinst
+#!/bin/sh
+which uci > /dev/null || exit 0
+        uci -q get ucitrack.@eqos[0] > /dev/null || {
+        uci add ucitrack eqos > /dev/null
+        uci set ucitrack.@eqos[0].init=eqos
+        uci commit
+}
+endef
+
+define Package/luci-app-eqos/postrm
+#!/bin/sh
+which uci > /dev/null || exit 0
+        uci -q get ucitrack.@eqos[0] > /dev/null && {
+        uci delete ucitrack.@eqos[0]
+        uci commit
+}
+endef
+
 $(eval $(call BuildPackage,luci-app-eqos))
