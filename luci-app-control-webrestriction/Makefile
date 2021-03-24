@@ -1,17 +1,34 @@
-# Copyright (C) 2016 Openwrt.org
-#
-# This is free software, licensed under the Apache License, Version 2.0 .
-#
-
 include $(TOPDIR)/rules.mk
 
-LUCI_TITLE:=LuCI support for Webrestriction From Koolshare
-LUCI_PKGARCH:=all
+PKG_NAME:=luci-app-control-webrestriction
 PKG_VERSION:=1.0
-PKG_RELEASE:=6-20200921
+PKG_RELEASE:=6-2021325
 
-include $(TOPDIR)/feeds/luci/luci.mk
+include $(INCLUDE_DIR)/package.mk
 
-# call BuildPackage - OpenWrt buildroot signature
+define Package/luci-app-control-webrestriction
+	SECTION:=luci
+	CATEGORY:=LuCI
+	SUBMENU:=3. Applications
+	TITLE:=LuCI support for Webrestriction
+	PKGARCH:=all
+	DEPENDS:=+iptables-mod-filter +kmod-ipt-filter
+endef
 
+define Build/Compile
+endef
 
+define Package/luci-app-control-webrestriction/conffiles
+	/etc/config/webrestriction
+endef
+
+define Package/luci-app-control-webrestriction/install
+	$(INSTALL_DIR) $(1)/usr/lib/lua/luci
+	cp -pR ./luasrc/* $(1)/usr/lib/lua/luci
+	$(INSTALL_DIR) $(1)/
+	cp -pR ./root/* $(1)/
+	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
+	po2lmo ./po/zh-cn/webrestriction.po $(1)/usr/lib/lua/luci/i18n/webrestriction.zh-cn.lmo
+endef
+
+$(eval $(call BuildPackage,luci-app-control-webrestriction))

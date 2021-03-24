@@ -1,2 +1,11 @@
 msgid "Control"
 msgstr "管控"
+
+msgid "webrestriction"
+msgstr "访问限制"
+
+msgid "Running Status"
+msgstr "运行状态"
+
+msgid "Collecting data..."
+msgstr "收集数据..."

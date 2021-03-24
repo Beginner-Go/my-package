@@ -1,38 +1,19 @@
-#
-# Copyright (C) 2006-2017 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-	PKG_NAME:=luci-app-eqos
-	PKG_VERSION:=1
-	PKG_RELEASE:=3-20201105
-
-	PKG_MAINTAINER:=Jianhui Zhao <jianhuizhao329@gmail.com>
+PKG_NAME:=luci-app-eqos
+PKG_VERSION:=1
+PKG_RELEASE:=3-20210325
 
 include $(INCLUDE_DIR)/package.mk
-
 
 define Package/luci-app-eqos
 	SECTION:=luci
 	CATEGORY:=LuCI
-	TITLE:=Easy QoS(Support speed limit based on IP address)
+	SUBMENU:=3. Applications
+	TITLE:=LuCI support for EQOS
 	PKGARCH:=all
 	DEPENDS:=+luci-base +tc +kmod-sched-core +kmod-ifb
-	SUBMENU:=3. Applications
-endef
-
-define Package/luci-app-eqos/description
-	Luci interface for the eqos.
-endef
-
-define Build/Prepare
-endef
-
-define Build/Configure
+	MAINTAINER:=Jianhui Zhao <jianhuizhao329@gmail.com>
 endef
 
 define Build/Compile
