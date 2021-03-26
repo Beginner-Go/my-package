@@ -10,7 +10,7 @@ end
 
 function act_status()
 	local e={}
-	e.koolproxy=luci.sys.call("pidof %s >/dev/null"%"koolproxy")==0
+	e.running=luci.sys.call("pidof %s >/dev/null"%"koolproxy")==0
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(e)
 end
