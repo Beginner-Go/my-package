@@ -4,6 +4,7 @@ function index()
 	if not nixio.fs.access("/etc/config/webrestriction") then
 		return
 	end
+	
 	entry({"admin", "control"}, firstchild(), "Control", 50).dependent = false
 	entry({"admin", "control", "webrestriction"}, cbi("webrestriction"), _("webrestriction"), 11).dependent = true
 	entry({"admin", "control", "webrestriction", "status"}, call("status")).leaf = true
