@@ -1,6 +1,7 @@
 local ipc = require "luci.ip"
 
-local m = Map("eqos", translate("Network speed control service"))
+local m = Map("eqos", translate("Network speed control service"),translate("Limit client speed"))
+m:section(SimpleSection).template  = "eqos/eqos_status"
 
 local s = m:section(TypedSection, "eqos", "")
 s.anonymous = true
