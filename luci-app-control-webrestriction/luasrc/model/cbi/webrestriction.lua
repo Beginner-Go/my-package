@@ -2,14 +2,9 @@ local o = require "luci.sys"
 local a, e, t
 
 a = Map("webrestriction", translate("访问限制"), translate("使用黑名单或者白名单模式控制列表中的客户端是否能够连接到互联网。"))
-a.template = "webrestriction/webrestriction_status"
-e = a:section(TypedSection, "basic", translate("Running Status"))
-e.anonymous = true
+a:section(SimpleSection).template = "webrestriction/webrestriction_status"
 
-t = e:option(DummyValue, "webrestriction_status", translate("当前状态"))
-t.template = "webrestriction/webrestriction"
-t.value = translate("Collecting data...")
-e = a:section(TypedSection, "basic", translate("全局设置"))
+e = a:section(TypedSection, "basic")
 e.anonymous = true
 
 t = e:option(Flag, "enable", translate("开启"))
