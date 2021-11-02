@@ -1,19 +1,25 @@
 local o = require "luci.sys"
-local a, t, e
+local m, t, e
 
-a = Map("weburl", translate("网址过滤"), translate("在这里设置关键词过滤，可以是URL里任意字符，可以过滤如视频网站、QQ、迅雷、淘宝。。。"))
-a:section(SimpleSection).template = "weburl/weburl_status"
+m = Map("weburl")
+m.title = translate("网址过滤")
+m.description = translate("在这里设置关键词过滤，可以是URL里任意字符，可以过滤如视频网站、QQ、迅雷、淘宝。。。")
 
-t = a:section(TypedSection, "basic")
+m:section(SimpleSection).template = "weburl/weburl_status"
+
+t = m:section(TypedSection, "basic")
 t.anonymous = true
 
 e = t:option(Flag, "enable", translate("开启"))
 e.rmempty = false
 
-e = t:option(Flag, "algos", translate("强效过滤"), translate("一般来说普通过滤效果就很好了，强制过滤会使用更复杂的算法导致更高的CPU占用。"))
+e = t:option(Flag, "algos", translate("强效过滤"))
+e.description = translate("一般来说普通过滤效果就很好了，强制过滤会使用更复杂的算法导致更高的CPU占用。")
 e.rmempty = false
 
-t = a:section(TypedSection, "macbind", translate("关键词设置"), translate("黑名单MAC不设置为全客户端过滤，如设置只过滤指定的客户端。过滤时间可不设置。"))
+t = m:section(TypedSection, "macbind")
+t.title = translate("关键词设置")
+t.description = translate("黑名单MAC不设置为全客户端过滤，如设置只过滤指定的客户端。过滤时间可不设置。")
 t.template = "cbi/tblsection"
 t.anonymous = true
 t.addremove = true
@@ -36,4 +42,4 @@ e.rmempty = true
 e = t:option(Value, "keyword", translate("网址关键词"))
 e.rmempty = false
 
-return a
+return m
