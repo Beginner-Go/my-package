@@ -2,33 +2,16 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-control-webrestriction
 PKG_VERSION:=1.0
-PKG_RELEASE:=6-20210915
+PKG_RELEASE:=6-20211118
 
-include $(INCLUDE_DIR)/package.mk
+LUCI_TITLE:=LuCI support for Webrestriction
+LUCI_PKGARCH:=all
+LUCI_DEPENDS:=+iptables-mod-filter +kmod-ipt-filter
 
-define Package/luci-app-control-webrestriction
-	SECTION:=luci
-	CATEGORY:=LuCI
-	SUBMENU:=3. Applications
-	TITLE:=LuCI support for Webrestriction
-	PKGARCH:=all
-	DEPENDS:=+iptables-mod-filter +kmod-ipt-filter
+define Package/$(PKG_NAME)/conffiles
+/etc/config/webrestriction
 endef
 
-define Build/Compile
-endef
+include $(TOPDIR)/feeds/luci/luci.mk
 
-define Package/luci-app-control-webrestriction/conffiles
-	/etc/config/webrestriction
-endef
-
-define Package/luci-app-control-webrestriction/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci
-	cp -pR ./luasrc/* $(1)/usr/lib/lua/luci
-	$(INSTALL_DIR) $(1)/
-	cp -pR ./root/* $(1)/
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	po2lmo ./po/zh-cn/webrestriction.po $(1)/usr/lib/lua/luci/i18n/webrestriction.zh-cn.lmo
-endef
-
-$(eval $(call BuildPackage,luci-app-control-webrestriction))
+# call BuildPackage - OpenWrt buildroot signature

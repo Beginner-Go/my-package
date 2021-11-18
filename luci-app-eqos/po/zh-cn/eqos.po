@@ -1,3 +1,6 @@
+msgid "Control"
+msgstr "管控"
+
 msgid "EQOS"
 msgstr "网速控制"
 

@@ -4,9 +4,9 @@ XHR.poll(3, '<%=url([[admin]], [[control]], [[webrestriction]], [[status]])%>', 
 		var tb = document.getElementById('webrestriction_status');
 		if (data && tb) {
 			if (data.running) {
-				tb.innerHTML = '<em><b><font color=green><%:Webrestriction%> <%:RUNNING%></font></b></em>';
+				tb.innerHTML = '<em><b><font color=green><%:访问限制%> <%:RUNNING%></font></b></em>';
 			} else {
-				tb.innerHTML = '<em><b><font color=red><%:Webrestriction%> <%:NOT RUNNING%></font></b></em>';
+				tb.innerHTML = '<em><b><font color=red><%:访问限制%> <%:NOT RUNNING%></font></b></em>';
 			}
 		}
 	}

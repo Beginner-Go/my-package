@@ -4,9 +4,9 @@ XHR.poll(3, '<%=url([[admin]], [[control]], [[weburl]], [[status]])%>', null,
 		var tb = document.getElementById('weburl_status');
 		if (data && tb) {
 			if (data.running) {
-				tb.innerHTML = '<em><b><font color=green><%:Weburl%> <%:RUNNING%></font></b></em>';
+				tb.innerHTML = '<em><b><font color=green><%:网址过滤%> <%:RUNNING%></font></b></em>';
 			} else {
-				tb.innerHTML = '<em><b><font color=red><%:Weburl%> <%:NOT RUNNING%></font></b></em>';
+				tb.innerHTML = '<em><b><font color=red><%:网址过滤%> <%:NOT RUNNING%></font></b></em>';
 			}
 		}
 	}

@@ -5,7 +5,7 @@ function index()
 		return
 	end
 
-	entry({"admin", "control"}, firstchild(), "Control", 44).dependent = false
+	entry({"admin", "control"}, firstchild(), "Control", 50).dependent = false
 	entry({"admin", "control", "weburl"}, cbi("weburl"), _("网址过滤"), 12).dependent = true
 	entry({"admin", "control", "weburl", "status"}, call("act_status")).leaf = true
 end

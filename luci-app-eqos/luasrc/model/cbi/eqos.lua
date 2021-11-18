@@ -1,5 +1,3 @@
-local ipc = require "luci.ip"
-
 m = Map("eqos")
 m.title = translate("Network speed control service")
 m.description = translate("Limit client speed")
@@ -28,7 +26,7 @@ s.sortable = true
 
 ip = s:option(Value, "ip", translate("IP address"))
 
-ipc.neighbors({family = 4, dev = "br-lan"}, function(n)
+luci.ip.neighbors({family = 4, dev = "br-lan"}, function(n)
 	if n.mac and n.dest then
 		ip:value(n.dest:string(), "%s (%s)" %{ n.dest:string(), n.mac })
 	end

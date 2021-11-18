@@ -2,7 +2,3 @@
 config basic
 	option enable '0'
 	option algos '0'
-
-config macbind
-	option keyword 'qq.com'
-	option enable '0'
