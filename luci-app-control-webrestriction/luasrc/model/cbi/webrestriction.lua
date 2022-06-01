@@ -5,7 +5,7 @@ a = Map("webrestriction")
 a.title = translate("访问限制")
 a.description = translate("使用黑名单或者白名单模式控制列表中的客户端是否能够连接到互联网。")
 
-a:section(SimpleSection).template = "webrestriction/webrestriction_status"
+a:section(SimpleSection).template  = "webrestriction/webrestriction_status"
 
 e = a:section(TypedSection, "basic")
 e.anonymous = true
