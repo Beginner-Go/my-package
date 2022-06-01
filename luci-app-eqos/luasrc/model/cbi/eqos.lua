@@ -2,7 +2,7 @@ m = Map("eqos")
 m.title = translate("Network speed control service")
 m.description = translate("Limit client speed")
 
-m:section(SimpleSection).template = "eqos/eqos_status"
+m:section(SimpleSection).template  = "eqos/eqos_status"
 
 s = m:section(TypedSection, "eqos")
 s.anonymous = true
