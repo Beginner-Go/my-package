@@ -5,7 +5,7 @@ m = Map("weburl")
 m.title = translate("网址过滤")
 m.description = translate("在这里设置关键词过滤，可以是URL里任意字符，可以过滤如视频网站、QQ、迅雷、淘宝。。。")
 
-m:section(SimpleSection).template = "weburl/weburl_status"
+m:section(SimpleSection).template  = "weburl/weburl_status"
 
 t = m:section(TypedSection, "basic")
 t.anonymous = true
@@ -31,6 +31,7 @@ e = t:option(Value, "macaddr", translate("黑名单MAC"))
 e.rmempty = true
 
 o.net.mac_hints(function(t, a) e:value(t, "%s (%s)" % {t, a}) end)
+
 e = t:option(Value, "timeon", translate("开始过滤时间"))
 e.placeholder = "00:00"
 e.rmempty = true
